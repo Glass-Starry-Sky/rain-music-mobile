@@ -1,0 +1,72 @@
+{
+    "card1": {
+        "hasBorder": true,
+        "content": [
+            {
+                "label": "我的消息"
+            },
+            {
+                "label": "创作者中心"
+            }
+        ]
+    },
+    "card2": {
+        "hasBorder": false,
+        "title": "其他",
+        "content": [
+            {
+                "label": "设置"
+            },
+            {
+                "label": "夜间模式"
+            },
+            {
+                "label": "定时关闭"
+            },
+            {
+                "label": "个性装扮"
+            }
+        ]
+    },
+    "card3": {
+        "hasBorder": false,
+        "title": "音乐服务",
+        "content": [
+            {
+                "label": "听歌识曲"
+            },
+            {
+                "label": "音乐黑名单"
+            },
+            {
+                "label": "歌手黑名单"
+            },
+            {
+                "label": "音乐闹钟"
+            },
+            {
+                "label": "歌曲推荐"
+            }
+        ]
+    },
+    "card4": {
+        "hasBorder": false,
+        "content": [
+            {
+                "label": "订单"
+            },
+            {
+                "label": "优惠券"
+            },
+            {
+                "label": "个人信息与隐私保护"
+            },
+            {
+                "label": "第三方权限"
+            },
+            {
+                "label": "关于"
+            }
+        ]
+    }
+}

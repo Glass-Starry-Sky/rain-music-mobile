@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>musicPlayer</title>
+    <!-- 导包 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.21.0/dist/axios.min.js"></script>
+    <!-- <script src="./js/main.js"></script> -->
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        @font-face {
+            font-family: 'icomoon';
+            src: url('fonts/icomoon.eot?b5uopg');
+            src: url('fonts/icomoon.eot?b5uopg#iefix') format('embedded-opentype'),
+                url('fonts/icomoon.ttf?b5uopg') format('truetype'),
+                url('fonts/icomoon.woff?b5uopg') format('woff'),
+                url('fonts/icomoon.svg?b5uopg#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+            font-display: block;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="ediCenter" id="app">
+        <!-- 1 -->
+        <div class="h_title clearfix">
+            <h2 class="text_title">悦听</h2>
+
+            <div class="search_box">
+                <input type="text" class="input_search" autocomplete="off" v-model="query" @keyup.enter="searchMusic">
+
+            </div>
+
+        </div>
+        <!-- 2 -->
+        <div class="play_backgr clearfix">
+
+            <!-- 播放列表 -->
+            <div class="music_nav">
+                <ul class="song_list">
+                    <li v-for="(item,index) in musicList">
+                        <a class="play_area" href="javascript:;" @click="playMusic(item.id)">
+                            <span class="serial">{{index+1}}</span>
+                            <b v-text="item.name"></b>
+                        </a>
+
+                    </li>
+                </ul>
+            </div>
+
+
+            <!-- 专辑与动画效果 -->
+            <div class="middle">
+
+                <!-- playing:isPlaying判断是否绑定playing类 -->
+                <div class="music_anima" :class="{playing:isPlaying}">
+                    <img class="player_bar  " src="./images/playerbar.png" alt="">
+                    <!-- 加入playing类后，会找到对应single_cover和music_cover，执行动画running操作 -->
+                    <img class="single_cover play_anima" src="./images/singlecover.png" alt="">
+                    <img class="music_cover  play_anima" :src="musicCover" alt="">
+                </div>
+
+            </div>
+
+            <!-- 评论 -->
+            <div class="comment">
+                <h5>热门留言</h5>
+                <dl v-for="item in hotComments">
+                    <dt><img id="pic" :src="item.user.avatarUrl" alt=""></dt>
+                    <dd id="name">{{item.user.nickname}}</dd>
+                    <dd id="content">{{item.content}}</dd>
+                </dl>
+            </div>
+        </div>
+        <!-- 3 -->
+        <!-- 播放组件 -->
+        <div class="audio_control">
+            <audio ref='audio' :src="musicUrl" controls autoplay loop class="myaudio" @play="playState"
+                @pause="pauseState"></audio>
+
+        </div>
+
+    </div>
+
+    <!-- ---------------------------------Vue------------------------------------- -->
+    <script>
+        // !因为单独写在js文件里，会识别不到el对应的id，只能放到这里了
+        var app = new Vue({
+            el: "#app",
+            data: {
+                query: "", 
+
+                musicList: [],
+                // 歌曲地址
+                musicUrl: "",
+                // 歌曲封面
+                musicCover: "",
+                // 歌曲评论
+                hotComments: [],
+                // 是否播放状态
+                isPlaying: false
+            },
+
+            methods: {
+                searchMusic: function () {
+                    var that = this;
+                    axios.get("https://autumnfish.cn/search?keywords=" + this.query)
+                        .then(function (response) {
+
+                            //歌曲存放路径
+                            that.musicList = response.data.result.songs;
+                            // console.log(that.musicList);
+                        }, function (err) { })
+
+                },
+                playMusic: function (musicId) {
+                    var that = this;
+                    // 获取歌曲地址
+                    axios.get("https://autumnfish.cn/song/url?id=" + musicId)
+                        .then(function (response) {
+                            that.musicUrl = response.data.data[0].url;
+                        }, function (err) { })
+
+                    // 歌曲专辑获取
+                    axios.get("https://autumnfish.cn/song/detail?ids=" + musicId)
+                        .then(function (response) {
+                            // console.log(response);
+                            that.musicCover = response.data.songs[0].al.picUrl;
+
+                        }, function (err) { })
+                    axios.get("https://autumnfish.cn/comment/hot?type=0&id=" + musicId)
+                        .then(function (response) {
+                            console.log(response);
+                            that.hotComments = response.data.hotComments;
+
+                        }, function (err) { })
+                },
+                playState: function () {
+                    this.isPlaying = true;
+
+                },
+                pauseState: function () {
+                    this.isPlaying = false;
+
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

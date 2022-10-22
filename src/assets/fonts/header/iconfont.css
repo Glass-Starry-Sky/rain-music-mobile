@@ -1,0 +1,155 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 3628697 */
+  src: url('iconfont.woff2?t=1664160217597') format('woff2'),
+       url('iconfont.woff?t=1664160217597') format('woff'),
+       url('iconfont.ttf?t=1664160217597') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-suijibofang:before {
+  content: "\e6bd";
+}
+
+.icon-shunxubofang:before {
+  content: "\e672";
+}
+
+.icon-delete:before {
+  content: "\e6b5";
+}
+
+.icon-zhongmingming:before {
+  content: "\e657";
+}
+
+.icon-aixin_shixin:before {
+  content: "\eca1";
+}
+
+.icon-aixin:before {
+  content: "\e60f";
+}
+
+.icon-zuojiantou:before {
+  content: "\e610";
+}
+
+.icon-drag:before {
+  content: "\e730";
+}
+
+.icon-saoyisao:before {
+  content: "\e8b5";
+}
+
+.icon-youjiantou:before {
+  content: "\e630";
+}
+
+.icon-list:before {
+  content: "\e6a3";
+}
+
+.icon-box:before {
+  content: "\e7f5";
+}
+
+.icon-musiclist:before {
+  content: "\e69c";
+}
+
+.icon-shangyishoushangyige:before {
+  content: "\e78a";
+}
+
+.icon-xiayigexiayishou:before {
+  content: "\e7a5";
+}
+
+.icon-xiajiantou:before {
+  content: "\e63c";
+}
+
+.icon-24gl-repeatOnce2:before {
+  content: "\ea75";
+}
+
+.icon-ziyuan:before {
+  content: "\e637";
+}
+
+.icon-like:before {
+  content: "\e65f";
+}
+
+.icon-changyong_shoucang:before {
+  content: "\e6b4";
+}
+
+.icon-edit:before {
+  content: "\e649";
+}
+
+.icon-shuaxin:before {
+  content: "\e600";
+}
+
+.icon-add:before {
+  content: "\e767";
+}
+
+.icon-music:before {
+  content: "\e658";
+}
+
+.icon-music1:before {
+  content: "\e700";
+}
+
+.icon-play-square:before {
+  content: "\e796";
+}
+
+.icon-Music:before {
+  content: "\e63e";
+}
+
+.icon-comment:before {
+  content: "\e671";
+}
+
+.icon-gedan:before {
+  content: "\e636";
+}
+
+.icon-Chat:before {
+  content: "\ea94";
+}
+
+.icon-playfill:before {
+  content: "\e74f";
+}
+
+.icon-stop:before {
+  content: "\e750";
+}
+
+.icon-pifu:before {
+  content: "\e650";
+}
+
+.icon-tinggeshiqu:before {
+  content: "\e690";
+}
+
+.icon-zhedie-zhankai:before {
+  content: "\e6d9";
+}
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+
+    <svg height="800" width="800">
+        <!-- 底色圆  cx和cy用于定位-->
+        <!-- stroke-dasharray第二参数是表示一个点和下一个点的距离，设置足够大，只看到一个点就好-->
+        <circle cx="400" cy="400" r="100" fill="none" stroke-width="20" stroke="grey"></circle>
+        <circle class="process"
+          
+            cx="400" cy="400" r="100" fill="none" 
+            stroke-width="20" stroke="red"
+            stroke-linecap="round"
+            stroke-dasharray="1,10000"
+            >    
+           
+        </circle>
+        <text class="text" x="380" y="400" font-size="50" fill="red">0</text>
+      
+    </svg>
+    <!-- <button class="add" style="width:100px;height:100px">add</button>
+    <button class="sub">sub</button> -->
+</body>
+<script>
+const process=document.querySelector('.process')
+const text=document.querySelector('.text')
+const add=document.querySelector('.add')
+const sub=document.querySelector('.sub')
+
+function rotateCircle(num){
+    //获得周长
+    var circleLength=Math.floor(2*Math.PI *parseFloat(process.getAttribute('r')))
+    var value=num *circleLength/100
+    console.log(value)
+    process.setAttribute('stroke-dasharray',value+',10000')
+
+    text.innerHTML=num+'%'
+}
+let num=0;
+add.addEventListener('click',()=>{
+    num++;
+    rotateCircle(num)
+})
+sub.addEventListener('click',()=>{
+    num--;
+    rotateCircle(num)
+})
+</script>
+
+<style>
+    .process{
+        /* transform: rotate3d(10deg,50deg,0); */
+        /* transform: rotate(0,30deg); */
+        transform: rotateZ(-90deg);
+        transform-origin: center center;
+    }
+
+
+    .audio_control{
+        display: flex;
+        position: fixed;
+        top: 85%;
+        left:0%;
+        width: 100vw;
+        height: 54px;
+        border: none;
+    }
+</style>
+</html>
